@@ -1,0 +1,28 @@
+{
+  "name": "bmjs-engverb",
+  "version": "1.0.0",
+  "description": "An English utility designed for generating a verbs's different forms from a given string, including support for irregular verbs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R spec test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brent258/bmjs-engverb.git"
+  },
+  "keywords": [
+    "PKG",
+    "javascript",
+    "nodejs"
+  ],
+  "author": "Brent McCoy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brent258/bmjs-engverb/issues"
+  },
+  "homepage": "https://github.com/brent258/bmjs-engverb#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
+  }
+}

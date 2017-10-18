@@ -1,6 +1,5 @@
 # bmjs-engverb
-An English utility designed for generating a verbs's different forms from a given string, including support for irregular verbs as well as words prefixed by "un-" or "re-".
-Receives an input of the base verb string and returns an object with the following properties:
+An English utility designed for generating a verbs's different forms from a given string, including support for irregular verbs with common prefixes like "un-" or "re-". Receives an input of the base verb string and returns an object with the following properties:
 
 {
   infinitive: **String**,

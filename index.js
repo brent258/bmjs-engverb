@@ -1172,5 +1172,153 @@ module.exports = function (verbString) {
       verbObject.pluralPresent = verbObject.infinitive;
     }
   }
+  // Add functions for retrieving finalized verb string values
+  verbObject.present = function(person,isNegative,isContinuous,isPerfect) {
+    if (!person || typeof person !== 'string' || !(person.toUpperCase() === 'FIRST' || person.toUpperCase() === 'SINGULAR' || person.toUpperCase() === 'PLURAL')) {
+      return this.infinitive;
+    }
+    if (person.toUpperCase() === 'FIRST' && !isNegative && !isContinuous && !isPerfect) {
+      return this.firstPresent;
+    }
+    else if (person.toUpperCase() === 'FIRST' && !isNegative && isContinuous && !isPerfect) {
+      return 'am ' + this.continuous;
+    }
+    else if (person.toUpperCase() === 'SINGULAR' && !isNegative && !isContinuous && !isPerfect) {
+      return this.singularPresent;
+    }
+    else if (person.toUpperCase() === 'SINGULAR' && !isNegative && isContinuous && !isPerfect) {
+      return 'is ' + this.continuous;
+    }
+    else if (person.toUpperCase() === 'PLURAL' && !isNegative && !isContinuous && !isPerfect) {
+      return this.pluralPresent;
+    }
+    else if (person.toUpperCase() === 'PLURAL' && !isNegative && isContinuous && !isPerfect) {
+      return 'are ' + this.continuous;
+    }
+    else if ((person.toUpperCase() === 'FIRST' || person.toUpperCase() === 'PLURAL') && !isNegative && !isContinuous && isPerfect) {
+      return 'have ' + this.perfect;
+    }
+    else if (!(person.toUpperCase() === 'FIRST' || person.toUpperCase() === 'PLURAL') && !isNegative && !isContinuous && isPerfect) {
+      return 'has ' + this.perfect;
+    }
+    else if ((person.toUpperCase() === 'FIRST' || person.toUpperCase() === 'PLURAL') && !isNegative && isContinuous && isPerfect) {
+      return 'have been ' + this.continuous;
+    }
+    else if (!(person.toUpperCase() === 'FIRST' || person.toUpperCase() === 'PLURAL') && !isNegative && isContinuous && isPerfect) {
+      return 'has been ' + this.continuous;
+    }
+    else if (lowercasedVerbString !== 'be' && (person.toUpperCase() === 'FIRST' || person.toUpperCase() === 'PLURAL') && isNegative && !isContinuous && !isPerfect) {
+      return 'don\'t ' + this.infinitive;
+    }
+    else if (lowercasedVerbString !== 'be' && !(person.toUpperCase() === 'FIRST' || person.toUpperCase() === 'PLURAL') && isNegative && !isContinuous && !isPerfect) {
+      return 'doesn\'t ' + this.infinitive;
+    }
+    else if (lowercasedVerbString === 'be' && person.toUpperCase() === 'FIRST' && isNegative && !isContinuous && !isPerfect) {
+      return 'am not';
+    }
+    else if (lowercasedVerbString === 'be' && person.toUpperCase() === 'SINGULAR' && isNegative && !isContinuous && !isPerfect) {
+      return 'isn\'t';
+    }
+    else if (lowercasedVerbString === 'be' && person.toUpperCase() === 'PLURAL' && isNegative && !isContinuous && !isPerfect) {
+      return 'aren\'t';
+    }
+    else if (person.toUpperCase() === 'FIRST' && isNegative && isContinuous && !isPerfect) {
+      return 'am not ' + this.continuous;
+    }
+    else if (person.toUpperCase() === 'SINGULAR' && isNegative && isContinuous && !isPerfect) {
+      return 'isn\'t ' + this.continuous;
+    }
+    else if (person.toUpperCase() === 'PLURAL' && isNegative && isContinuous && !isPerfect) {
+      return 'aren\'t ' + this.continuous;
+    }
+    else if ((person.toUpperCase() === 'FIRST' || person.toUpperCase() === 'PLURAL') && isNegative && !isContinuous && isPerfect) {
+      return 'haven\'t ' + this.perfect;
+    }
+    else if (!(person.toUpperCase() === 'FIRST' || person.toUpperCase() === 'PLURAL') && isNegative && !isContinuous && isPerfect) {
+      return 'hasn\'t ' + this.perfect;
+    }
+    else if ((person.toUpperCase() === 'FIRST' || person.toUpperCase() === 'PLURAL') && isNegative && isContinuous && isPerfect) {
+      return 'haven\'t been ' + this.continuous;
+    }
+    else if (!(person.toUpperCase() === 'FIRST' || person.toUpperCase() === 'PLURAL') && isNegative && isContinuous && isPerfect) {
+      return 'hasn\'t been ' + this.continuous;
+    }
+  };
+  verbObject.past = function(person,isNegative,isContinuous,isPerfect) {
+    if (!person || typeof person !== 'string' || !(person.toUpperCase() === 'FIRST' || person.toUpperCase() === 'SINGULAR' || person.toUpperCase() === 'PLURAL')) {
+      return this.infinitive;
+    }
+    if (person.toUpperCase() === 'FIRST' && !isNegative && !isContinuous && !isPerfect) {
+      return this.firstPast;
+    }
+    else if ((person.toUpperCase() === 'FIRST' || person.toUpperCase() === 'SINGULAR') && !isNegative && isContinuous && !isPerfect) {
+      return 'was ' + this.continuous;
+    }
+    else if (person.toUpperCase() === 'SINGULAR' && !isNegative && !isContinuous && !isPerfect) {
+      return this.singularPast;
+    }
+    else if (person.toUpperCase() === 'PLURAL' && !isNegative && !isContinuous && !isPerfect) {
+      return this.pluralPast;
+    }
+    else if (person.toUpperCase() === 'PLURAL' && !isNegative && isContinuous && !isPerfect) {
+      return 'were ' + this.continuous;
+    }
+    else if (!isNegative && !isContinuous && isPerfect) {
+      return 'had ' + this.perfect;
+    }
+    else if (!isNegative && isContinuous && isPerfect) {
+      return 'had been ' + this.continuous;
+    }
+    else if (lowercasedVerbString !== 'be' && isNegative && !isContinuous && !isPerfect) {
+      return 'didn\'t ' + this.infinitive;
+    }
+    else if (lowercasedVerbString === 'be' && (person.toUpperCase() === 'FIRST' || person.toUpperCase() === 'SINGULAR') && isNegative && !isContinuous && !isPerfect) {
+      return 'wasn\'t';
+    }
+    else if (lowercasedVerbString === 'be' && person.toUpperCase() === 'PLURAL' && isNegative && !isContinuous && !isPerfect) {
+      return 'weren\'t';
+    }
+    else if ((person.toUpperCase() === 'FIRST' || person.toUpperCase() === 'SINGULAR') && isNegative && isContinuous && !isPerfect) {
+      return 'wasn\'t ' + this.continuous;
+    }
+    else if (person.toUpperCase() === 'PLURAL' && isNegative && isContinuous && !isPerfect) {
+      return 'weren\'t ' + this.continuous;
+    }
+    else if (isNegative && !isContinuous && isPerfect) {
+      return 'hadn\'t ' + this.perfect;
+    }
+    else if (isNegative && isContinuous && isPerfect) {
+      return 'hadn\'t been ' + this.continuous;
+    }
+  };
+  verbObject.future = function(person,isNegative,isContinuous,isPerfect) {
+    if (!person || typeof person !== 'string' || !(person.toUpperCase() === 'FIRST' || person.toUpperCase() === 'SINGULAR' || person.toUpperCase() === 'PLURAL')) {
+      return this.infinitive;
+    }
+    if (!isNegative && !isContinuous && !isPerfect) {
+      return 'will ' + this.infinitive;
+    }
+    else if (isNegative && !isContinuous && !isPerfect) {
+      return 'won\'t ' + this.infinitive;
+    }
+    if (!isNegative && isContinuous && !isPerfect) {
+      return 'will be ' + this.continuous;
+    }
+    else if (isNegative && isContinuous && !isPerfect) {
+      return 'won\'t be ' + this.continuous;
+    }
+    if (!isNegative && !isContinuous && isPerfect) {
+      return 'will have ' + this.perfect;
+    }
+    else if (isNegative && !isContinuous && isPerfect) {
+      return 'won\'t have ' + this.perfect;
+    }
+    if (!isNegative && isContinuous && isPerfect) {
+      return 'will have been ' + this.continuous;
+    }
+    else if (isNegative && isContinuous && isPerfect) {
+      return 'won\'t have been ' + this.continuous;
+    }
+  };
   return verbObject;
 };

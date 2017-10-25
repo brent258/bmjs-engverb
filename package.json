@@ -1,6 +1,6 @@
 {
   "name": "bmjs-engverb",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An English utility designed for generating a verbs's different forms from a given string, including support for irregular verbs.",
   "main": "index.js",
   "scripts": {

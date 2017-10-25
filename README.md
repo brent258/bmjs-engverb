@@ -1,22 +1,22 @@
 # bmjs-engverb
 An English utility designed for generating a verbs's different forms from a given string, including support for irregular verbs with common prefixes like "un-" or "re-". Receives an input of the base verb string and returns an object with the following properties:
 
-*infinitive: **String**,
-*firstPresent: **String**,
-*singularPresent: **String**,
-*pluralPresent: **String**,
-*firstPast: **String**,
-*singularPast: **String**,
-*pluralPast: **String**,
-*perfect: **String**,
-*continuous: **String**
+* infinitive: **String**,
+* firstPresent: **String**,
+* singularPresent: **String**,
+* pluralPresent: **String**,
+* firstPast: **String**,
+* singularPast: **String**,
+* pluralPast: **String**,
+* perfect: **String**,
+* continuous: **String**
 
 
 As well as methods for printing out the final forms of different verb strings that accept a string value for the person (first, singular or plural) and optional values for the tense:
 
-*present(person: String, isNegative: Bool, isContinuous: Bool, isPerfect: Bool) => (String).
-*past(person: String, isNegative: Bool, isContinuous: Bool, isPerfect: Bool) => (String).
-*future(person: String, isNegative: Bool, isContinuous: Bool, isPerfect: Bool) => (String).
+* present(person: String, isNegative: Bool, isContinuous: Bool, isPerfect: Bool) => (String).
+* past(person: String, isNegative: Bool, isContinuous: Bool, isPerfect: Bool) => (String).
+* future(person: String, isNegative: Bool, isContinuous: Bool, isPerfect: Bool) => (String).
 
 *Example usage:*
 ```javascript
